@@ -2,3 +2,5 @@ bin/
 include/
 lib/
 lib64
+Pedestrian_Tracker.egg-info/
+dist/
