@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
+import argparse
+
 def main():
-    print(f"Hello Pedestrians!")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('data_dir', type=str)
+    args = parser.parse_args()
+
+    
 
 
 if __name__ == '__main__':

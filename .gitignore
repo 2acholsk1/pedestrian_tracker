@@ -1,6 +1,8 @@
 bin/
+build/
+dist/
 include/
 lib/
 lib64
-Pedestrian_Tracker.egg-info/
-dist/
+*.egg-info/
+data/c6s1
