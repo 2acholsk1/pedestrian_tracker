@@ -4,5 +4,5 @@ dist/
 include/
 lib/
 lib64
-*.egg-info/
+Pedestrain_Tracker.egg-info/
 data/c6s1

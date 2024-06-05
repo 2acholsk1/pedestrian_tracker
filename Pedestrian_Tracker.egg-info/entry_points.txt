@@ -1,3 +1,0 @@
-[console_scripts]
-Track_Them = src.__main__:main
-

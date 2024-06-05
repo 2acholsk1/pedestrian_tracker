@@ -13,7 +13,7 @@ class Histogram:
         self.factor_graph = factor_graph
 
 
-    def histogram_bound_box_calc(self) -> list:
+    def hist_bb_calc(self) -> list:
         h_range = [0, 180]
         s_range = [0, 256]
         gray_range = [0, 256]
@@ -41,7 +41,7 @@ class Histogram:
 
         return hist
 
-    def histogram_bound_box_compare(self, bound_box_current_hist:list, bound_box_previous_hist:list) -> DiscreteFactor:
+    def hist_bb_compare(self, bound_box_current_hist:list, bound_box_previous_hist:list) -> DiscreteFactor:
 
         for iter_curr, hist_cur in enumerate(bound_box_current_hist):
             similar_lst = []
