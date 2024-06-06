@@ -7,7 +7,7 @@ from pgmpy.factors.discrete import DiscreteFactor
 
 class Histogram:
 
-    def __init__(self, bound_box, new_obj_prob:float, factor_graph:DiscreteFactor) -> None:
+    def __init__(self, bound_box:list, new_obj_prob:float, factor_graph:DiscreteFactor) -> None:
         self.bound_box = bound_box
         self.new_obj_prob = new_obj_prob
         self.factor_graph = factor_graph
@@ -26,7 +26,7 @@ class Histogram:
 
         for iter, bound_box in enumerate(self.bound_box):
 
-            bound_box = cv2.resize(bound_box, (400, 400)) # size z dupy
+            bound_box = cv2.resize(bound_box, (500, 500))
             bound_box_hsv = cv2.cvtColor(bound_box, cv2.COLOR_BGR2HSV)
             bound_box_gray = cv2.cvtColor(bound_box, cv2.COLOR_BGR2GRAY)
 
@@ -53,7 +53,7 @@ class Histogram:
                 similar = (hist_comp_h + hist_comp_s + hist_comp_gray)/3
                 similar_lst.append(similar)
 
-            factor = DiscreteFactor([str(iter_curr)], [len(bound_box_previous_hist)], [self.new_obj_prob + similar_lst])
+            factor = DiscreteFactor([str(iter_curr)], [len(bound_box_previous_hist) + 1], [[self.new_obj_prob ]+ similar_lst])
             self.factor_graph.add_factors(factor)
             self.factor_graph.add_edge(str(iter_curr),factor)
 

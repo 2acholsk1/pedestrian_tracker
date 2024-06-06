@@ -20,8 +20,8 @@ class BoundBox:
         for iter, coords in enumerate(self.coordinates):
             self.nodes.append(str(iter))
             self.compute_coords(coords)
-            self.bb_storage.append(self.img[self.x + int(self.h/4) : self.x + int(3*self.h/4),
-                                            self.y + int(self.w/4) : self.y + int(3*self.w/4)])
+            self.bb_storage.append(self.img[self.y + int(self.h/4) : self.y + int(3*self.h/4),
+                                            self.x + int(self.w/4) : self.x + int(3*self.w/4)])
 
 
     # def _parse_file(self):
@@ -55,5 +55,5 @@ class BoundBox:
         return self.nodes
 
 # Usage
-bbox = BoundBox('data/c6s1/bboxes.txt')
-print(bbox.get_bounding_boxes('c6s1_002576.jpg'))
+# bbox = BoundBox('data/c6s1/bboxes.txt')
+# print(bbox.get_bounding_boxes('c6s1_002576.jpg'))

@@ -6,6 +6,9 @@ import argparse
 import numpy as np
 from pathlib import Path
 from pgmpy.models import FactorGraph
+from pgmpy.factors.discrete import DiscreteFactor
+from pgmpy.inference import BeliefPropagation
+from itertools import combinations
 from boundbox import BoundBox
 from histogram import Histogram
 
@@ -68,7 +71,28 @@ def compute_prob(images_path, bb_file):
         nodes_matrix_possibility = [[0 if row == column else nodes_matrix_possibility[row][column] for row in range(matrix_size)] for column in range(matrix_size)]
         nodes_matrix_possibility[0][0] = 1
 
-        # if hist_prev != 0:
+        if hist_prev != 0:
+            factor_graph = hist.hist_bb_compare(hist_curr, hist_prev)
+
+            for h_curr, h_prev in combinations(range(int(bb_num)), 2):
+                
+                factor = DiscreteFactor([str(h_curr), str(h_prev)], [matrix_size, matrix_size], nodes_matrix_possibility)
+
+                factor_graph.add_factors(factor)
+                factor_graph.add_edge(str(h_curr), factor)
+                factor_graph.add_edge(str(h_prev), factor)
+
+            belief_propagation = BeliefPropagation(factor_graph)
+            belief_propagation.calibrate()
+
+            bp_results = (belief_propagation.map_query(factor_graph.get_variable_nodes()))
+
+            keys = sorted(bp_results.keys())
+            val = [bp_results[key] for key in keys]
+            print(*([v - 1 for v in val]), sep=" ")
+
+            with open ("main_out.txt", "a") as file:
+                file.write(" ".join(map(str, [v - 1 for v in val])) + "\n")
 
 
 if __name__ == '__main__':

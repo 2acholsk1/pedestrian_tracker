@@ -6,3 +6,4 @@ lib/
 lib64
 Pedestrain_Tracker.egg-info/
 data/c6s1
+__pycache__
