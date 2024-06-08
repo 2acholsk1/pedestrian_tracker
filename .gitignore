@@ -4,6 +4,8 @@ dist/
 include/
 lib/
 lib64
-Pedestrain_Tracker.egg-info/
+share/
+Pedestrian_Tracker.egg-info/
 data/c6s1
 __pycache__
+data/gif_images/

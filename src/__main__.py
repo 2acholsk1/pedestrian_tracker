@@ -12,8 +12,7 @@ from itertools import combinations
 from boundbox import BoundBox
 from histogram import Histogram
 
-
-def compute_prob(images_path_arg, bb_file_arg):
+def main(images_path_arg, bb_file_arg):
 
     images_path = images_path_arg
     bb_file = bb_file_arg
@@ -26,6 +25,8 @@ def compute_prob(images_path_arg, bb_file_arg):
 
     prob_new = 0.3
     
+    results = []
+
     for img_num in range(len(images_path)):
         
         nodes = []
@@ -39,7 +40,6 @@ def compute_prob(images_path_arg, bb_file_arg):
         bb_num = bb_file.readline().rstrip("\n")
 
         hist_prev = hist_curr
-
 
         if bb_num == "0":
             print('')
@@ -65,8 +65,7 @@ def compute_prob(images_path_arg, bb_file_arg):
 
         if bb_none == 1:
             bb_none = 0
-            for _ in range(int(float(bb_num))):
-                print("-1", end=" ")
+            results.append([-1 for _ in range(int(float(bb_num)))])
             continue
 
         matrix_size = int(float(len(hist_prev))) + 1
@@ -93,58 +92,20 @@ def compute_prob(images_path_arg, bb_file_arg):
 
             keys = sorted(bp_results.keys())
             val = [bp_results[key] for key in keys]
+            results.append([v - 1 for v in val])
             print(*([v - 1 for v in val]), sep=" ")
-            
+        else:
+            results.append([-1 for _ in range(int(float(bb_num)))])
+            print(*([-1 for _ in range(int(float(bb_num)))]), sep=" ")
 
-            with open ("main_out.txt", "a") as file:
-                file.write(" ".join(map(str, [v - 1 for v in val])) + "\n")
-
-
-def convert_ground_truth(input_file, output_file):
-    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
-        while True:
-            image_id = infile.readline().strip()
-            if not image_id:
-                break
-            person_count = int(infile.readline().strip())
-            results = []
-            for _ in range(person_count):
-                line = infile.readline().strip().split()
-                results.append(int(line[0]))
-            outfile.write(" ".join(map(str, results)) + "\n")
-    print(f"Converted ground truth saved to {output_file}")
-
-def evaluate_accuracy(ground_truth_file, predictions_file):
-    correct = 0
-    total = 0
-
-    with open(ground_truth_file, 'r') as gt_file, open(predictions_file, 'r') as pred_file:
-        for gt_line, pred_line in zip(gt_file, pred_file):
-            gt_parts = gt_line.strip().split()
-            pred_parts = pred_line.strip().split()
-
-            if len(gt_parts) != len(pred_parts):
-                print(f"Error: Mismatch in number of predictions for line {gt_line}")
-                continue
-
-            correct += sum(1 for gt, pred in zip(gt_parts, pred_parts) if gt == pred)
-            total += len(gt_parts)
-
-    if total == 0:
-        print("Error: No data to evaluate. Check the input files.")
-        return
-
-    accuracy = correct / total
-
-    print(f"Accuracy: {accuracy:.2f} ({correct} correct out of {total} total)")
-
-
+    with open ("data/check/results.txt", "w") as file:
+        for result in results:
+            file.write(" ".join(map(str, result)) + "\n")
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('data_dir', type=str)
-    parser.add_argument('ground_truth_file', type=str)
     args = parser.parse_args()
 
     data_dir = Path(args.data_dir)
@@ -155,12 +116,4 @@ if __name__ == '__main__':
 
     file = open(bb_dir, 'r')
     
-    compute_prob(images_path, file)
-
-    ground_truth_file = args.ground_truth_file
-    converted_ground_truth_file = "converted_ground_truth.txt"
-    convert_ground_truth(ground_truth_file, converted_ground_truth_file)
-
-    predictions_file = "main_out.txt"
-    evaluate_accuracy(converted_ground_truth_file, predictions_file)
-
+    main(images_path, file)
