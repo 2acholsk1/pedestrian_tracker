@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2024-06-08T14:31:57.680Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="mueFKSs6JqQTuzZ-t6yf" version="24.5.2" type="device">
+  <diagram name="Page-1" id="_FZNR4AvaZhK7pDFKjbK">
+    <mxGraphModel dx="1434" dy="826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;1. Initialization:&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-lr;" vertex="1" parent="1">
+          <mxGeometry x="95" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-15" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;2. Iterate Over Images&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-lr;" vertex="1" parent="1">
+          <mxGeometry x="185" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-16" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;3. Read Bounding Box Information&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="275" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-17" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;4. Compute Bounding Boxes&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="365" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-18" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;5. Compute Histograms&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="455" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-19" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;6. Handle No Bounding Boxes in Previous Image&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="545" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-20" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;7. Setup Node Possibility Matrix&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="635" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-21" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;8. Compare Histograms and Update Factor Graph&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="725" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-22" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;9. Perform Belief Propagation&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="815" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-23" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;10. Handle No Previous Histograms&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="905" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="-bpsZCc79_zcxdWVUBHo-24" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;11. Write Results to File&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;textDirection=vertical-rl;" vertex="1" parent="1">
+          <mxGeometry x="995" y="90" width="80" height="260" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

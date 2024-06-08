@@ -77,6 +77,8 @@ Main function processes the images and bounding boxes, computes histograms, comp
 
 ## Code workflow
 
+![drawio](data/pedestrain.drawio.png)
+
 1. __Initialization__:
 - Initialize variables for current and previous histograms (__hist_curr__, __hist_prev__), current bounding boxes (__bb_curr__), and a flag (__bb_none__) to handle cases with no bounding boxes.
 - Set a probability for new objects (__prob_new__).
