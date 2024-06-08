@@ -13,11 +13,16 @@ from boundbox import BoundBox
 from histogram import Histogram
 
 
-def compute_prob(images_path, bb_file):
+def compute_prob(images_path_arg, bb_file_arg):
+
+    images_path = images_path_arg
+    bb_file = bb_file_arg
 
     hist_curr = []
     hist_prev = []
-    bb_none = False
+    bb_curr = []
+
+    bb_none = 0
 
     prob_new = 0.3
     
@@ -27,19 +32,18 @@ def compute_prob(images_path, bb_file):
         coordinates_bb = []
         factor_graph = FactorGraph()
 
-        text = bb_file.readline().rstrip("\n")
-        bb_num = bb_file.readline().rstrip("\n")
+        _ = bb_file.readline().rstrip("\n")
 
-        img = cv2.imread(str(images_path[img_num]), cv2.IMREAD_UNCHANGED)
-        # cv2.imshow("tyk", img)
-        # cv2.waitKey(0)
+        img = cv2.imread(str(images_path_arg[img_num]), cv2.IMREAD_UNCHANGED)
+
+        bb_num = bb_file.readline().rstrip("\n")
 
         hist_prev = hist_curr
 
 
-        if bb_num == '0':
+        if bb_num == "0":
             print('')
-            bb_none = True
+            bb_none = 1
             continue
         
         hist_curr = []
@@ -48,7 +52,7 @@ def compute_prob(images_path, bb_file):
         for _ in range(int(float(bb_num))):
             coordinates_bb.append(bb_file.readline().rstrip("\n").split(" "))
 
-        bb = BoundBox(img, coordinates_bb)
+        bb = BoundBox(coordinates_bb, img)
         bb.compute_bb()
 
         bb_curr = bb.return_bb()
@@ -59,8 +63,8 @@ def compute_prob(images_path, bb_file):
         hist = Histogram(bb_curr, prob_new, factor_graph)
         hist_curr = hist.hist_bb_calc()
 
-        if bb_none:
-            bb_none = False
+        if bb_none == 1:
+            bb_none = 0
             for _ in range(int(float(bb_num))):
                 print("-1", end=" ")
             continue
@@ -89,8 +93,7 @@ def compute_prob(images_path, bb_file):
 
             keys = sorted(bp_results.keys())
             val = [bp_results[key] for key in keys]
-            # print(str(images_path[img_num]))
-            # print(*([v - 1 for v in val]), sep=" ")
+            print(*([v - 1 for v in val]), sep=" ")
             
 
             with open ("main_out.txt", "a") as file:
@@ -146,7 +149,7 @@ if __name__ == '__main__':
 
     data_dir = Path(args.data_dir)
     images_dir = Path(os.path.join(str(data_dir), 'frames'))
-    bb_dir = Path(os.path.join(str(data_dir), 'bboxes.txt'))
+    bb_dir = Path(os.path.join(data_dir, 'bboxes.txt'))
     
     images_path = sorted([img_path for img_path in images_dir.iterdir() if img_path.name.endswith('.jpg')])
 
