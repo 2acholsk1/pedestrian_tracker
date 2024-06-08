@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
 import cv2
-from typing import List
 class BoundBox:
 
-    def __init__(self, coordinates: List, image: cv2.Mat) -> None:
+    def __init__(self, coordinates: list, image: cv2.Mat) -> None:
         self.coordinates_ = coordinates
         self.img_ = image
         self.nodes_ = []
         self.bb_storage_ = []
 
 
-    def compute_coords(self, coordinates: List) -> None:
+    def compute_coords(self, coordinates: list) -> None:
         self.x_ = int(float(coordinates[0]))
         self.y_ = int(float(coordinates[1]))
         self.w_ = int(float(coordinates[2]))
@@ -26,10 +25,10 @@ class BoundBox:
                                             self.x_ + int(self.w_/4) : self.x_ + int(3*(self.w_)/4)])
     
 
-    def return_bb(self) -> List:
+    def return_bb(self) -> list:
         return self.bb_storage_
 
 
-    def return_nodes(self) ->List:
+    def return_nodes(self) ->list:
         return self.nodes_
 

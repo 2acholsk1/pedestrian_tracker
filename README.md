@@ -55,17 +55,17 @@ The project consists of two main classes BoundBox and Histogram.
 
 BoundBox class manages rectangular regions (bounding boxes) on images.
 Methods:
-- __init(self, coordinates: List, image: cv2.Mat)__: Initializes with bounding box coordinates and an image.
-- __compute_coords(self, coordinates: List)__: Converts and stores coordinates.
+- __init(self, coordinates: list, image: cv2.Mat)__: Initializes with bounding box coordinates and an image.
+- __compute_coords(self, coordinates: list)__: Converts and stores coordinates.
 - __compute_bb(self)__: Computes and extracts bounding boxes from the image.
-- __return_bb(self) -> List__: Returns the list of bounding boxes.
-- __return_nodes(self) -> List__: Returns the list of node identifiers.
+- __return_bb(self) -> list__: Returns the list of bounding boxes.
+- __return_nodes(self) -> list__: Returns the list of node identifiers.
 
 Histogram class computes and compares histograms of bounding boxes.
 Methods:
-- __init(self, bb: List, new_obj_prob: float, factor_graph: DiscreteFactor)__: Initializes with bounding boxes, new object probability, and a factor graph.
-- __hist_bb_calc(self) -> List__: Computes histograms for each bounding box.
-- __hist_bb_compare(self, bb_current_hist: List, bb_previous_hist: List) -> DiscreteFactor__: Compares histograms between frames and updates the factor graph.
+- __init(self, bb: list, new_obj_prob: float, factor_graph: DiscreteFactor)__: Initializes with bounding boxes, new object probability, and a factor graph.
+- __hist_bb_calc(self) -> list__: Computes histograms for each bounding box.
+- __hist_bb_compare(self, bb_current_hist: list, bb_previous_hist: list) -> DiscreteFactor__: Compares histograms between frames and updates the factor graph.
 
 There is also an auxiliary class - Visualize, which, as the name suggest, is used to visualize effects of the project.
 
