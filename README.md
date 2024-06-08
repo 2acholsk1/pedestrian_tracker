@@ -6,7 +6,8 @@
 - [Usage](#usage)
 - [Results](#results)
 - [Documentation](#documentation)
-
+- [Code workflow](#code-workflow)
+- [Bugs & Feature Requests](#bugs--feature-requests)
 
 ## Main goal
 
@@ -30,7 +31,10 @@ Then, you can easily build and install package by using:
 ```bash
 make setup
 ```
-
+If you want to use example data unzip it in data folder:
+```bash
+unzip c6s1
+```
 
 ## Usage
 
@@ -70,7 +74,9 @@ Methods:
 There is also an auxiliary class - Visualize, which, as the name suggest, is used to visualize effects of the project.
 
 Main function processes the images and bounding boxes, computes histograms, compares them, and performs belief propagation to track or identify objects across frames.
+
 ## Code workflow
+
 1. __Initialization__:
 - Initialize variables for current and previous histograms (__hist_curr__, __hist_prev__), current bounding boxes (__bb_curr__), and a flag (__bb_none__) to handle cases with no bounding boxes.
 - Set a probability for new objects (__prob_new__).
@@ -106,5 +112,9 @@ Main function processes the images and bounding boxes, computes histograms, comp
 10. __Handle No Previous Histograms__:
 - If no previous histograms are available, append __-1__ results for the current image.
 11. __Write Results to File__:
-- After processing all images, write the results to a text file ('data/check/results.txt').
+- After processing all images, write the results to a text file (`data/check/results.txt`).
+
+## Bugs & Feature Requests
+
+Please report bugs and request features using the [Issue Tracker](https://github.com/2acholsk1/pedestrian_tracker/issues).
 
