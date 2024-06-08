@@ -93,10 +93,10 @@ def main(images_path_arg, bb_file_arg):
             keys = sorted(bp_results.keys())
             val = [bp_results[key] for key in keys]
             results.append([v - 1 for v in val])
-            print(*([v - 1 for v in val]), sep=" ")
+            # print(*([v - 1 for v in val]), sep=" ")
         else:
             results.append([-1 for _ in range(int(float(bb_num)))])
-            print(*([-1 for _ in range(int(float(bb_num)))]), sep=" ")
+            # print(*([-1 for _ in range(int(float(bb_num)))]), sep=" ")
 
     with open ("data/check/results.txt", "w") as file:
         for result in results:
