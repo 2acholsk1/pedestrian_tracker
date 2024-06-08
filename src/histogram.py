@@ -2,18 +2,17 @@
 
 import cv2
 from pgmpy.factors.discrete import DiscreteFactor
-from typing import List
 
 
 class Histogram:
 
-    def __init__(self, bb:List, new_obj_prob:float, factor_graph:DiscreteFactor) -> None:
+    def __init__(self, bb:list, new_obj_prob:float, factor_graph:DiscreteFactor) -> None:
         self.bb_ = bb
         self.new_obj_prob_ = new_obj_prob
         self.factor_graph_ = factor_graph
 
 
-    def hist_bb_calc(self) -> List:
+    def hist_bb_calc(self) -> list:
         h_range = [0, 180]
         s_range = [0, 256]
         g_range = [0, 256]
@@ -41,7 +40,7 @@ class Histogram:
 
         return hist
 
-    def hist_bb_compare(self, bb_current_hist:List, bb_previous_hist:List) -> DiscreteFactor:
+    def hist_bb_compare(self, bb_current_hist:list, bb_previous_hist:list) -> DiscreteFactor:
 
         for iter_curr, hist_cur in enumerate(bb_current_hist):
             similar_lst = []
