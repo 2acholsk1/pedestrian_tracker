@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
 
 import cv2
+from typing import List
 class BoundBox:
 
-    def __init__(self, image: cv2.Mat, coordinates: list):
-        self.coordinates = coordinates
-        self.img = image
-        self.nodes = []
-        self.bb_storage = []
+    def __init__(self, coordinates: List, image: cv2.Mat) -> None:
+        self.coordinates_ = coordinates
+        self.img_ = image
+        self.nodes_ = []
+        self.bb_storage_ = []
 
-    def compute_coords(self, coordinates: list) -> None:
-        self.x = int(float(coordinates[0]))
-        self.y = int(float(coordinates[1]))
-        self.w = int(float(coordinates[2]))
-        self.h = int(float(coordinates[3]))
+    def compute_coords(self, coordinates: List) -> None:
+        self.x_ = int(float(coordinates[0]))
+        self.y_ = int(float(coordinates[1]))
+        self.w_ = int(float(coordinates[2]))
+        self.h_= int(float(coordinates[3]))
 
     
     def compute_bb(self) -> None:
-        for iter, coords in enumerate(self.coordinates):
-            self.nodes.append(str(iter))
+        for iter, coords in enumerate(self.coordinates_):
+            self.nodes_.append(str(iter))
             self.compute_coords(coords)
-            self.bb_storage.append(self.img[self.y + int(self.h/4) : self.y + int(3*self.h/4),
-                                            self.x + int(self.w/4) : self.x + int(3*self.w/4)])
+            self.bb_storage_.append(self.img_[self.y_ + int(self.h_/4) : self.y_ + int(3*(self.h_)/4),
+                                            self.x_ + int(self.w_/4) : self.x_ + int(3*(self.w_)/4)])
 
 
     # def _parse_file(self):
@@ -38,7 +39,7 @@ class BoundBox:
     #                 box_count = int(lines[i].strip())
     #                 i += 1
     #                 for _ in range(box_count):
-    #                     coords = list(map(float, lines[i].strip().split()))
+    #                     coords = List(map(float, lines[i].strip().split()))
     #                     data[current_image].append(coords)
     #                     i += 1
     #             else:
@@ -48,11 +49,11 @@ class BoundBox:
     # def get_bounding_boxes(self, image_name):
     #     return self.data.get(image_name, [])
     
-    def return_bb(self) -> list:
-        return self.bb_storage
+    def return_bb(self) -> List:
+        return self.bb_storage_
 
-    def return_nodes(self) ->list:
-        return self.nodes
+    def return_nodes(self) ->List:
+        return self.nodes_
 
 # Usage
 # bbox = BoundBox('data/c6s1/bboxes.txt')

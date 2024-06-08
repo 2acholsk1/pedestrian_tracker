@@ -40,7 +40,6 @@ setup(
     packages=setuptools.find_packages(),
     entry_points={
         'console_scripts': [
-            'Track_Them = src.__main__:main'
         ],
     },
     python_requires='>=3.11',
