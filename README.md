@@ -75,6 +75,9 @@ There is also an auxiliary class - Visualize, which, as the name suggest, is use
 
 Main function processes the images and bounding boxes, computes histograms, compares them, and performs belief propagation to track or identify objects across frames.
 
+Below is a diagram describing how to build a graph with two images and their bounding boxes:
+![example_process](data/example_process_diagram.png)
+
 ## Code workflow
 
 ![drawio](data/pedestrain.drawio.png)

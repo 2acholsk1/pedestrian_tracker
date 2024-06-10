@@ -1,0 +1,25 @@
+// Example Process
+digraph {
+	bgcolor=black
+	node [fillcolor=black fontcolor=white style=filled]
+	edge [color=white fontcolor=white]
+	A1 [label="Image 1: BB1 (10,10,50,50)"]
+	A2 [label="Image 1: BB2 (60,60,100,100)"]
+	B1 [label="Image 2: BB1 (12,12,52,52)"]
+	B2 [label="Image 2: BB2 (58,58,98,98)"]
+	B3 [label="Image 2: BB3 (150,150,200,200)"]
+	G1 [label="Factor Graph for Image 1"]
+	G2 [label="Factor Graph for Image 2"]
+	C [label="Histogram Comparison"]
+	D [label="Graph Calibration and Belief Propagation"]
+	E [label="Results: BB1->BB1, BB2->BB2, BB3->-1 (new)"]
+	A1 -> G1
+	A2 -> G1
+	B1 -> G2
+	B2 -> G2
+	B3 -> G2
+	G1 -> C [label="Histogram Comparison"]
+	G2 -> C
+	C -> D [label="Graph Calibration and Belief Propagation"]
+	D -> E [label=Results]
+}
